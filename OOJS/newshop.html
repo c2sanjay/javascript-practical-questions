@@ -1,0 +1,182 @@
+<html>
+    <title>Shopping Cart</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<head></head>
+<body>
+     <div>
+    <ul>
+    <li><a class="add-to-cart" href="#" data-name="Apple" data-price="1.22"> Apple $1.22</a></li>    
+    <li><a class="add-to-cart" href="#" data-name="orange" data-price="1.72"> Orange $1.72</a></li> 
+    <li><a class="add-to-cart" href="#" data-name="banana" data-price="2.22"> Banana $2.22</a></li> 
+    <li><a class="add-to-cart" href="#" data-name="chiku" data-price="1.01"> Chiku $1.00</a></li> 
+    </ul>
+        <button id="clear-cart">Clear Cart</button>
+    </div>
+    
+    
+    <div>
+    <ul id="show-cart">
+        
+    </ul>
+        <div>Total Cart:$<span id="total-cart"></span></div>
+    </div>
+<script>
+      
+   $('.add-to-cart').click(function(event){
+       event.preventDefault();
+       var name = $(this).attr('data-name');
+       var price = Number($(this).attr('data-price'));
+      
+        shoppingCart.addItemToCart(name, price, 1);
+       displayCart();
+   });
+    
+    $("#clear-cart").click(function(){
+      shoppingCart.clearCart();
+     displayCart();
+    
+    });
+    
+    
+ function displayCart(){
+        var cartArray = shoppingCart.listCart();
+        var output ="";
+     
+        for (var i in cartArray){
+            output += "<li>" +cartArray[i].name 
+                    +" "+cartArray[i].count
+                    +" x $" +cartArray[i].cost
+                    +" = $" +cartArray[i].total
+                    +" <button class='subtract-item' data-name='"
+                    +cartArray[i].name+"'>-</button>"
+                    +" <button class='add-item' data-name='"
+                    +cartArray[i].name+"'>+</button>"
+                    +" <button class='delete-item' data-name='"
+                    +cartArray[i].name+"'>X</button>"
+                    + "</li>";
+        }
+        $('#show-cart').html(output);
+        $('#total-cart').html(shoppingCart.totalCart());
+     
+      $('.delete-item').unbind().click('click', function(event){
+          var name = $(this).attr("data-name");
+       //console.log('ff');
+          shoppingCart.removeItemFromCartAll(name);
+          displayCart();
+      });
+     
+       $('.subtract-item').unbind().click('click', function(event){
+           var name = $(this).attr("data-name");
+          shoppingCart.removeItemFromCart(name);
+          displayCart();
+      });
+     $('#show-cart').unbind('click').on('click', '.add-item', function(event){
+           var name = $(this).attr("data-name");
+           shoppingCart.addItemToCart(name, 0, 1);
+          //shoppingCart.addItemToCart(name, price, 1);
+          displayCart();
+      });
+    }
+  /* _________________________________________ */  
+    
+    var shoppingCart = {};
+    shoppingCart.cart = []; 
+	
+  shoppingCart.Item = function(name, cost, count){
+        this.name = name;
+        this.cost = cost;
+        this.count = count;
+    };
+    
+    shoppingCart.addItemToCart = function (name, cost, count){
+	if (shoppingCart.cart === undefined || shoppingCart.cart === null) {
+     // do something 
+	 shoppingCart.cart=[]
+      }
+	 
+        for(var i in shoppingCart.cart){
+            if(shoppingCart.cart[i].name === name){  
+                shoppingCart.cart[i].count += count; 
+                 shoppingCart.saveCart();
+                return;
+            } 
+        }
+        var item = new shoppingCart.Item (name, cost, count);
+        shoppingCart.cart.push(item);
+        shoppingCart.saveCart();
+    };  
+    
+   shoppingCart.removeItemFromCart = function (name){
+        for(var i in shoppingCart.cart){
+            if(shoppingCart.cart[i].name === name){ 
+                shoppingCart.cart[i].count --;
+                if(shoppingCart.cart[i].count===0){
+                    shoppingCart.cart.splice(i, 1);
+                }
+                break;
+            }   
+        }   
+        shoppingCart.saveCart();
+    };
+    shoppingCart.removeItemFromCartAll = function (name){
+        for(var i in shoppingCart.cart){
+          if (shoppingCart.cart[i].name===name){
+            shoppingCart.cart.splice(i,1);   
+              break;
+          }    
+        }
+        shoppingCart.saveCart();
+    };
+    
+   shoppingCart.clearCart =  function (){
+        shoppingCart.saveCart();
+    };
+    
+    shoppingCart.countCart = function (){
+        var totalCount = 0;
+        for(var i in shoppingCart.cart){
+            totalCount += shoppingCart.cart[i].count;
+        }
+        return totalCount;
+    }; 
+    
+   shoppingCart.totalCart = function (){
+        var totalCost = 0;
+        for(var i in shoppingCart.cart){
+            totalCost += shoppingCart.cart[i].cost * shoppingCart.cart[i].count;   
+        }
+           return totalCost.toFixed(2);
+    };
+    
+    shoppingCart.listCart = function (){
+        var cartCopy = [];
+        for (var i in shoppingCart.cart){
+            var item = shoppingCart.cart[i];
+            var itemCopy = {};
+            for(var c in item){
+                itemCopy[c] = item[c];     
+            }
+            itemCopy.total = (shoppingCart.cart[i].cost * shoppingCart.cart[i].count).toFixed(2);
+            cartCopy.push(itemCopy);
+        }
+        return cartCopy; 
+    }; 
+    
+    shoppingCart.saveCart = function (){
+      localStorage.setItem('shopingCart', JSON.stringify(shoppingCart.cart)) ; 
+    };
+    
+  //  saveCart();
+    
+    shoppingCart.loadCart = function(){
+         shoppingCart.cart = JSON.parse(localStorage.getItem('shopingCart') ); 
+    };
+     
+    shoppingCart.loadCart();
+  
+     displayCart();
+  
+</script>
+
+</body>
+</html>
