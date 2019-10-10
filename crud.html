@@ -1,0 +1,194 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<style>
+        table{width: 60%; }
+        table td, th{border:1px solid red; padding:20px;}
+        td{border:1px solid red; padding:20px;}
+
+</style>
+<Script>
+    $(document).ready(function () {
+        var array = [
+            
+                    {id:1, Name: 'Sanjay', city: 'chandigarh', state:'punjab',  zip:12233},
+                    {id:2, Name: 'Ayan', city: 'chandigarh', state:'punjab',  zip:12233}
+                    
+                    ];
+
+//alert(array);
+
+var ids = 2;
+var updateId = 0;
+
+
+       $('#submit').click(function () { 
+         // var inputval = $('#name').val() + ", " + $('#state').val() + ", " + $('#City').val() + ", " + $('#zip').val();
+        //   alert(inputval);
+            var obj = {
+                Name: $('#name').val(),
+                state: $('#state').val(),
+                city: $('#City').val(),
+                zip: $('#zip').val(),
+                 id: (++ids)
+                }
+          
+            array.push(obj);
+            bind();
+            $('.cancel').trigger('click');
+           // console.log(JSON.stringify(array));
+
+/*
+$('#name').val('');
+$('#state').val('');
+$('#City').val('');
+$('#zip').val('');
+    // $('#tablediv').html(tabledata);
+   */
+     
+        });
+        $(document).on('click', '.cancel', function(){
+            $('#name').val('');
+            $('#state').val('');
+            $('#City').val('');
+            $('#zip').val('');
+        });
+
+   function bind(){
+
+  $('#tablediv').empty();
+  var headerrow = '<tr><th>Name</th> <th>State</th> <th>City</th> <th>zip</th> <th>Action</th><tr>';
+
+  $('#tablediv').append(headerrow);
+
+  for(var i = 0; i < array.length; i++){
+
+      var row = '<tr><td id="'+ array[i].id +'">' + array[i].Name + '</td><td>' + array[i].state + '</td><td>'+ array[i].city + '</td><td>'+ array[i].zip + '</td><td><a class="edit">Edit</a> | <a class="delete">Delete</a> | <a class="cancel">cancel</a></td></tr>';
+
+        $('#tablediv').append(row);
+
+    }
+
+     }
+        bind();
+
+
+
+  
+
+$(document).on('click', '.edit', function(){
+            //alert($(this).text());
+            updateId = ($(this).parent().parent().find('td:eq(0)').attr('id'));
+            $('#name').val($(this).parent().parent().find('td:eq(0)').text());
+            $('#City').val($(this).parent().parent().find('td:eq(1)').text());
+            $('#state').val($(this).parent().parent().find('td:eq(2)').text());
+            $('#zip').val($(this).parent().parent().find('td:eq(3)').text());
+
+        });
+
+       $(document).on('click', '.update', function(){ 
+
+           var obj = {
+
+                id: updateId,
+                Name: $('#name').val(),
+                state: $('#state').val(),
+                city: $('#City').val(),
+                zip: $('#zip').val(),
+
+           }
+           for(var i=0;i<array.length;i++){
+                if(array[i].id == updateId){
+                    array[i]=obj;
+                }
+            
+           }
+           bind();
+       });
+
+
+  $(document).on('click', '.delete', function(){ 
+
+ var deleteId = ($(this).parent().parent().find('td:eq(0)').attr('id'));
+//alert(deleteId);
+
+/*for(var i =0; i<array.length; i++){
+
+    if(array[i].id == deleteId){
+        array.splice(i,1)
+    } */
+    $.each(array, function(key,val){
+    if(val.id == deleteId){
+        array.splice(key,1)
+
+    }
+    
+    });
+
+    bind();
+});
+  });
+
+
+       
+    //});
+	
+	
+	var str = "madam"
+	
+	var isPalindrome = function(str)
+		{
+			if(str == str.split('').reverse().join('')){
+			
+			alert("no is palindrom");
+			} else{
+			
+			
+			alert("no is not palindrom");
+			}
+			
+		}
+	isPalindrome(str);
+	
+	var a = Object.seal(Object.preventExtensions({"name":"JOhn","age":33}))
+	
+	console.log(a);
+
+</Script>
+
+<body>
+
+    <div class='form'>
+        <label>Name:</label>
+        <input type='text' name='name' id='name'>
+        <br />
+        <br />
+        <br />
+        <label>State:</label>
+        <input type='text' name='state' id='state'>
+        <br />
+        <br />
+        <br />
+        <label>City:</label>
+        <input type='text' name='City' id='City'>
+        <br />
+        <br />
+        <br />
+        <label>Zip:</label>
+        <input type='text' name='zip' id='zip'>
+        <br />
+        <br />
+        <button id='submit'>Submit</button>
+
+        | <button class="update">Update</button>
+    </div>
+
+
+    <table id='tablediv'></table>
+
+</body>
+
+</html>

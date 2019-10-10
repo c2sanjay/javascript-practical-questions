@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<script>
+
+var arr22 = ['apple','orange','pear'];
+
+console.log("found:", arr22.indexOf("orange") != -1);
+function palin()
+{
+var Result,EnterNo,EnteredNo,temp=0;
+
+EnterNo=Number(document.getElementById("no_input").value);
+
+EnteredNo=EnterNo;
+while(EnterNo > 0)
+{
+Result = EnterNo%10;
+EnterNo = parseInt(EnterNo/10);
+temp = temp*10+Result;
+}
+console.log(temp);
+}
+
+let user = {
+  name: "John"
+};
+
+let descriptor = Object.getOwnPropertyDescriptor(user, 'name');
+
+console.log( JSON.stringify(descriptor, null, 2 ) );
+    
+const marvel = {}
+Object.defineProperty(marvel, 'ironman', {
+  value: 'Tony Stark',
+  enumerable: true,
+  writable: true,
+  configurable: true
+})
+console.log(marvel.ironman)
+marvel.ironman = 'sanjay'
+console.log(marvel.ironman)
+console.log(marvel)
+    
+    let abc = {}
+    abc.name='sanjay ch';
+    console.log(abc.name)
+    abc.name='sanjay ch dd';
+    console.log(abc.name)
+    
+    let arr = [['krunal', 'ankit', ['hello'],'sanjay', 34], ['rushabh', 'dhaval']];
+console.log(arr.toString());
+    
+    
+var cart = {
+    item: "Product 1",
+    price: 35.50,
+    qty: 2
+};
+var jsonStr = JSON.stringify( cart );
+sessionStorage.setItem( "cart", jsonStr );
+// now the cart is {"item":"Product 1","price":35.50,"qty":2}
+var cartValue = sessionStorage.getItem( "cart" );
+var cartObj = JSON.parse( cartValue );
+console.log(cartValue);
+    
+    console.log(cartObj);
+    
+    var arr2 = ["orange", "mango", "banana","ro", "sugar", "tea"];     
+   var  removed = arr2.slice(3, 2);
+    console.log('-- '+ removed);
+	
+	
+	var ay = [
+    {"name":"apple", "count": 2},
+    {"name":"orange", "count": 5},
+    {"name":"pear", "count": 3},
+    {"name":"orange", "count": 16}
+];
+   var  arrnewItem = [];
+	for(var i =0; i< ay.length; i++){
+	
+	 if(ay[i].name === "apple" )
+	 {
+		arrnewItem.push(ay[i]);
+	 }
+	}
+	console.log("Filter results:",arrnewItem);
+	
+</script>
+</head>
+<body>
+Enter any Number: <input id="no_input">
+<button onclick="palin()">Check</button></br></br>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<html>
+<head>
+
+</head>
+<body>
+<script type = "text/javascript">
+
+function sortArray(){
+
+let Arr = [10,20,30,20,40,50, 20];
+
+for (let i = 1; i <= Arr.length; i++){
+  for(let j = 0; j <= i; j++){
+  
+  if(Arr[i] > Arr[j]){
+		let temp = Arr[i];
+		Arr[i] = Arr[j];
+		Arr[j] = temp;
+  }
+  }
+}
+
+document.write(Arr)
+
+function uniqueBySorting(array) {
+  var sortedArray = array.slice().sort(function(a, b) {
+    return a > b ? 1 : 0;
+  });
+  var result = [];
+
+  result.push(sortedArray[0]);
+  for (var i = 1; i < sortedArray.length; i++) {
+    if (sortedArray[i] !== sortedArray[i - 1]) {
+      result.push(sortedArray[i]);
+    }
+  }
+  return result;
+}
+
+document.write(uniqueBySorting( Arr));
+    
+    
+    
+    
+
+let a=812; let b=34; let c=37;
+
+if(a >= b && a >= c){
+console.log('A is greatest');
+}else if  
+
+(b >= a && b >=c)
+{
+
+
+console.log('b is greatest');
+}
+else{
+
+console.log('c is greatest');
+
+}
+
+}
+
+
+sortArray();
+    
+   const fruits = {
+   
+       name:'abc',
+       age:34
+   
+   } 
+   let test = Object.keys(fruits);
+    console.log(test);
+      let test1 = Object.entries(fruits);
+    console.log(test1);
+    
+var user = {
+
+   name:'sanjay',
+    age:34,
+    city:'chandigarh'
+
+    
+}
+for(var key in user){
+ 
+    if(user.hasOwnProperty(key)){
+     console.log(name);
+    }
+}
+
+function fname(firstname, lastname){
+var test = "my name is ";
+
+    function innerFunc(surname){
+	var surname = 'singh';
+	
+	return fullname = test + firstname + '' + lastname + '' + surname;
+	}
+return innerFunc();
+
+}
+fname('Sumit ', ' Sehgal');
+
+console.log(fullname);
+
+</script>
+
+
+</body>
+</html>

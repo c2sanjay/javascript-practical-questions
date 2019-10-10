@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+
+<html>
+   <body>
+      <script type = "text/javascript">
+         
+         if( sessionStorage.hits ) {
+            sessionStorage.hits = Number(sessionStorage.hits) +1;
+         } else {
+            sessionStorage.hits = 1;
+         }
+         document.write("Total Hits :" + sessionStorage.hits );
+		 
+		 let meals = {  
+			  mealA: 'Breakfast',
+			  mealB: 'Lunch',
+			  mealC: 'Dinner'
+		};
+for (let mealName of Object.keys(meals)) {  
+  console.log(mealName);
+}
+for (let [key, value] of Object.entries(meals)) {  
+  console.log(key + ':' + value);
+}
+      </script>
+		
+      <p>Refresh the page to increase number of hits.</p>
+      <p>Close the window and open it again and check the result.</p>
+
+   </body>
+</html>

@@ -1,0 +1,160 @@
+<html>
+<head>
+   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<input type='text' id='text'>
+
+<script type = "text/javascript">
+
+function getData(){
+	axios.get("https://jsonplaceholder.typicode.com/todos/")
+	.then((data)=>{
+		console.log("data", data)
+	}).catch((err)=>{
+console.log("err". err)
+	})
+}
+getData();
+
+
+async function getnewData(){
+   const data = await axios.get('https://jsonplaceholder.typicode.com/todos/1')
+   console.log('data1',data);
+}
+getnewData();
+
+var arr = [2,4,5,6,7]
+if(arr.includes(3)){
+var test = arr.filter(item => item > 4 && item < 7)
+console.log(test);
+
+var test2 = arr.sort((a,b)=> b > a ? -1 : 1);
+console.log(test2);
+ar = ['d','r','t','v','e','y','q','a']
+var test3 = ar.sort((a,b) => b > a ? -1 : 1);
+console.log(test3)
+} else{
+console.log('no data');
+const name = 'sanjay';
+
+const an = Array.from(name);
+console.log(an);
+const dd = Array.of(3,4,5,6,7,7,8,90);
+console.log(dd);
+const  ss = [4,5,6,7,8]
+const ww = ss.reduce((a1,b1) => a1+b1 ,0)
+console.log(ww);
+var officers = [
+  { id: 20, name: 'Captain Piett', point:12 },
+  { id: 24, name: 'General Veers' , point:2 },
+  { id: 56, name: 'Admiral Ozzel' , point:2 },
+  { id: 88, name: 'Commander Jerjerrod' , point:2 }
+];
+
+ officers.map(function(rest){
+var sss = rest.id + rest.point;
+console.log('=' +sss);
+})
+
+
+var officerID = [];
+
+officers.map(function(off){
+   var test = officerID.push(off.id);
+   console.log(test)
+});
+
+}
+
+var orders =[  
+   {  
+      "name":"chain",
+      "description":"necklace chain",
+      "status":"shipped"
+   },
+   {  
+      "name":"pen",
+      "description":"ball pen",
+      "status":"shipped"
+   },
+   {  
+      "name":"book",
+      "description":"travel diary",
+      "status":"delivered"
+   },
+   {  
+      "name":"brush",
+      "description":"paint brush",
+      "status":"delivered"
+   },
+    {  
+      "name":"sadnjay",
+      "description":"paint brush",
+      "status":"shipped"
+   }
+];
+
+	var orderInfo = orders.map(function(order){
+	if(order.status === "delivered" || order.status !== "shipped"){
+	var info = {"Ordername":order.name,			
+				"Orderdescription":order.description}
+				
+				return info;
+	}
+	});
+	console.log(orderInfo);
+
+	
+
+		/*function palindrome(){
+		revString ='';
+		inpString = 121;
+		let i = inpString.length;
+
+		for(let j = i; j >= 0; i--){
+		  revString = revString + inpString.charAt(j);
+		  document.write(revString);
+		}
+		if(revString === inpString){
+		  console.log(inpString + 'is palindrome');
+		}
+		else{ console.log(inpString + 'is not palindrome');}
+		}
+		palindrome();
+		
+*/
+function palin()
+{
+var a,no,b,temp=0;
+
+no=123;
+
+
+let number = 'sanjay'
+
+let c = number.reverse();
+
+
+
+b=no;
+while(no>0)
+{
+a=no%10;
+no=parseInt(no/10);
+temp=temp*10+a;
+}
+alert(temp);
+
+console.log(c);
+}
+</script>
+</head>
+<body>
+Enter any Number: <input id="no_input">
+<button onclick="palin()">Check</button></br></br>
+
+		
+</script>
+</body>
+</html>

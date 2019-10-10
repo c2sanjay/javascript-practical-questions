@@ -1,0 +1,89 @@
+
+
+<html>
+<head>
+</head>
+<body>
+<script>
+function doHomework(subject, callback) {
+  alert(`Starting my ${subject} homework.`);
+  callback();
+}
+function alertFinished(){
+  alert('Finished my homework');
+}
+doHomework('math', alertFinished);
+
+function getFunction(){
+  return new Promise(function(resolve, reject) {
+    reject('something went wrong');
+  });
+
+
+}
+
+getFunction().then(success, failure);
+
+function success(){
+  console.log('success');
+}
+function failure(err){
+  console.log(err);
+}
+
+var array = [3 , 6, 2, 56, 32, 5, 89, 32];
+var largest = 0;
+
+for (var i=0; i<=largest; i++){
+    if (array[i]> largest) {
+        var largest = array[i];
+    }
+}
+console.log(largest);
+
+function palindrome(str) {
+
+    var len = str.length;
+    var mid = Math.floor(len/2);
+
+    for ( var i = 0; i < mid; i++ ) {
+        if (str[i] !== str[len - 1 - i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+palindrome('Madam')
+
+
+
+function  dohome(subject, callback){
+ console.log(`my name is ${subject}`);
+ callback();
+}
+function test(){
+console.log('alert alet');
+}
+ dohome('Maths', test);
+
+
+
+var A = function (){
+
+this.name = "sanjay";
+}
+
+A.prototype.print = function(){
+console.log(this.name);
+}
+
+var test = new A();
+
+test.print();
+
+
+</script>
+</body>
+</html>
