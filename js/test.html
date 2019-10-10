@@ -1,0 +1,113 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Nested loops in JavaScript</title>
+</head>
+
+<body>
+    <!-- <script type="text/javascript">
+        var i, j, mulTot;
+        for (i = 1; i <= 15; i++) {
+            for (j = 1; j < 15; j++) {
+                mulTot = i * j;
+
+                if (mulTot < 10) {
+                    mulTot = " " + mulTot;
+                }
+                else {
+                    mulTot = " " + mulTot;
+                }
+                document.write(mulTot);
+            }
+            document.write("<BR>"); d
+        }
+
+
+    </script> -->
+
+    <script>
+        var arr = [
+            [1, 2],
+            [3, 4],
+            [4, 5],
+            [6, 3]
+        ];
+
+        for (var i in arr) {
+            for (var j in arr[i]) {
+
+                console.log(arr[i]);
+            }
+        }
+
+
+        abc = 20;
+
+        function test(abc = 30) {
+            abc = 23
+            console.log('abc inner' + abc);
+            abc = 25;
+            //console.log(abc);
+        }
+        test();
+        console.log('abc outer' + abc);
+
+        var myObject = {
+            foo: "bar",
+            func: function () {
+                var self = this;
+                console.log("outer func:  this.foo = " + this.foo);
+                console.log("outer func:  self.foo = " + self.foo);
+                (function () {
+                    console.log("inner func:  this.foo = " + this.foo);
+                    console.log("inner func:  self.foo = " + self.foo);
+                }());
+            }
+        };
+        myObject.func();
+
+        //  var b = 1;
+
+        function outer() {
+
+            var b = 2
+            console.log('--' + b)
+
+            function inner(b = 33) {
+                console.log('--' + b)
+                b++;
+                // var b = 3;
+                console.log(b)
+            }
+            inner();
+        }
+        outer();
+
+
+        text = "schoudhary"
+
+        function hoist() {
+            //  var a = 10;
+            //  b = 20;
+            console.log(text);
+        }
+
+        hoist();
+        // console.log(' dd' + a);
+        //  console.log('// ' + b);
+
+
+
+
+
+        x = 21;
+
+        function func() {
+            console.log('fdsars ' + x);
+            var x = 20;
+        }
+        func();
+    </script>
+</body>
+
+</html>

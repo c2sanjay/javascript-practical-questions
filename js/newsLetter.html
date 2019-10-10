@@ -1,0 +1,117 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        var x = 12
+        console.log(x);
+        function f() {
+            console.log("foo");
+            setTimeout(g, 100);
+            console.log("baz");
+            h();
+        }
+
+        function g() {
+            console.log("bar");
+        }
+
+        function h() {
+            console.log("blix");
+        }
+
+        f();
+
+
+        //Create an empty constructor function
+        function Person() {
+        }
+        //Add property name, age to the prototype property of the Person constructor function
+        Person.prototype.name = "Ashwin";
+        Person.prototype.age = 26;
+        Person.prototype.friends = ['Jadeja', 'Vijay'],//Arrays are of reference type in JavaScript
+            Person.prototype.sayName = function () {
+                console.log(this.name);
+            }
+
+        //Create objects using the Person constructor function
+        var person1 = new Person();
+        var person2 = new Person();
+
+        //Add a new element to the friends array
+        person1.friends.push("Amit");
+
+        console.log(person1.friends);// Output: "Jadeja, Vijay, Amit"
+        console.log(person2.friends);// Output: "Jadeja, Vijay, Amit"
+
+
+        function func() {
+            console.log('hello');
+            setTimeout(function () {
+                console.log('hi')
+            }, 0)
+
+            console.log('gama');
+        }
+        func();
+
+
+        var a = [1, 2, 3, 4]
+
+        for (var ai = 0; ai < a.length; ai++) {
+            console.log("Value of 'ai': " + ai)
+            setTimeout(function () {
+                // By the time this code will be executed, all the iterations of 
+                // for loop would have completed and value of ai would be 4
+                console.log("Value of 'ai': " + ai)
+            }, 1000)
+
+        }
+        console.log(window)
+
+
+        var surname = ' singh';
+
+        function outerFunction(fname, lname) {
+
+            var str = "HI my name is ";
+
+            function innerFunction() {
+                return test = str + fname + ' ' + lname + '' + surname;
+            }
+            return innerFunction();
+        }
+
+        outerFunction('Rohit ', 'Sardana');
+
+        document.write(test)
+
+
+
+
+
+
+
+
+
+    </script>
+
+</head>
+<style>
+    #header {
+        background: pink;
+        width: 200px;
+        height: 200px;
+    }
+</style>
+
+<body>
+    <div id='header' onclick="changeHeader()">
+        <p>hello India</p>
+    </div>
+
+</body>
+
+</html>

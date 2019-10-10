@@ -1,0 +1,110 @@
+<html>
+
+<head></head>
+
+<body>
+    <script>
+        function Palindrome() {
+            var rem, temp, final = 0;
+            var number = 121;
+
+            temp = i;
+            // while (number > 0)
+
+            for (var i = 0; i <= number.length; i++) {
+                rem = i % 10;
+                number = parseInt(i / 10);
+                final = final * 10 + rem;
+            }
+            if (final == temp) {
+                alert('IT is palindrome')
+            }
+            else {
+                window.alert(" IT is not palindrome");
+            }
+        }
+
+
+        class parent {
+
+            constructor(name, age, city) {
+                this.name = name;
+                this.age = age;
+                this.city = city;
+            }
+            /*
+                        get name() {
+                        return this.name;
+                    }
+                    set name(newName) {
+                        this.name = newName;
+                    } */
+        }
+
+        class child extends parent {
+            constructor(name, age, city, country) {
+                super(name, age, city)
+                this.country = country;
+            }
+        }
+
+        class subchild extends child {
+            constructor(name, age, city, country, phone) {
+                super(name, age, city)
+                this.phone = phone;
+            }
+        }
+
+        const var2 = new child('sanjay', 35, 'chandigarh', 'India')
+        const var1 = new subchild('sanjay', 35, 'chandigarh', 'India', 9888882364);
+
+        console.log(var1.name);
+        console.log(var1.age);
+        console.log(var1.city);
+        console.log(var2.country);
+        console.log(var1.phone);
+
+
+
+
+
+
+        function func() {
+            even = [];
+            odd = [];
+
+            for (var i = 0; i <= 100; i++) {
+                if (i % 2 == 0) {
+                    even.push(i);
+                }
+                else {
+                    odd.push(i);
+                }
+            }
+        }
+        func();
+
+        function even1() {
+
+            document.write(even)
+        }
+
+        function odd1() {
+            document.write(odd)
+        }
+
+    </script>
+
+    <button onClick="even1()">Even</button>
+
+    <button onClick='odd1()'>Odd</button>
+
+
+
+
+
+    <button onClick="
+        Palindrome()">CHECK</button>
+</body>
+
+</html>

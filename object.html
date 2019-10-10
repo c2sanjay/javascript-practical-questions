@@ -1,0 +1,248 @@
+<html>
+
+<head>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+</head>
+
+<body>
+
+
+</body>
+
+</html>
+
+
+<input type="button" value="Generate Table" onclick="GenerateTable()" />
+<hr />
+<div id="dvTable">
+</div>
+
+<button id='btnAdd'>Add A New Items</button>
+<button id='btnDelegate'>btndelegate </button>
+
+<ul>
+    <li>LIST ITEM</li>
+    <li>LIST ITEM</li>
+</ul>
+<form>
+    <input type='text' value='abc'>
+    <button id='go'>Go</button>
+</form>
+
+<script type="text/javascript">
+
+    $('#go').click(function () {
+
+        var attrMethod = $('input[type="text"]').attr('value');
+        alert('ATTR ' + attrMethod);
+
+        var propMethod = $('input[type="text"]').prop('value');
+        alert('PROP ' + propMethod);
+
+    });
+
+    function GenerateTable() {
+        debugger;
+
+        //Build an array containing Customer records.
+        var customers = new Array();
+        customers.push(["Customer Id", "Name", "Country"]);
+        customers.push([1, "John Hammond", "United States"]);
+        customers.push([2, "Mudassar Khan", "India"]);
+        customers.push([3, "Suzanne Mathews", "France"]);
+        customers.push([4, "Robert Schidner", "Russia"]);
+
+        //Create a HTML Table element.
+        var table = document.createElement("TABLE");
+        table.border = "1";
+
+        //Get the count of columns.
+        var columnCount = customers[0].length;
+
+        //Add the header row.
+        var row = table.insertRow(-1);
+        for (var i = 0; i < columnCount; i++) {
+            var headerCell = document.createElement("TH");
+            headerCell.innerHTML = customers[0][i];
+            row.appendChild(headerCell);
+        }
+
+        //Add the data rows.
+        for (var i = 1; i < customers.length; i++) {
+            row = table.insertRow(-1);
+            for (var j = 0; j < columnCount; j++) {
+                var cell = row.insertCell(-1);
+                cell.innerHTML = customers[i][j];
+            }
+        }
+
+        var dvTable = document.getElementById("dvTable");
+        dvTable.innerHTML = "";
+        dvTable.appendChild(table);
+
+
+    }
+
+    function ourterFun(i) {
+        var var1 = 3;
+
+        function innerFun(j) {
+            console.log(i + j + (++var1)); // It will return the 16.
+        }
+        innerFun(10);
+    }
+    ourterFun(2); // Pass an argument 2
+
+
+    $(document).ready(function () {
+
+        $('li').live('click', function () {
+            $(this).fadeOut(500);
+        })
+
+        $('#btnAdd').live('click', function () {
+
+            $('ul').append('<li>New LIST items</li>');
+        });
+
+        $('#btnDelegate').on('click', function () {
+            $('li').die('click');
+        })
+
+
+        var arr = [3, 4, 5, 6, 2, 8]
+        for (var i = arr.length; i > 0; i--) {
+            arr.shift();
+
+        }
+        console.log(arr);
+        var ar = [1, 2, 3, 4, 5, 6];
+
+        console.log(ar); // Output [1, 2, 3, 4, 5, 6]
+
+        ar.length = 0;
+
+        console.log(ar);
+
+        let total = 0;
+        let someArray = [20, 32, 25, 75];
+
+        for (let i = 0; i <= someArray.length - 1; i++) {
+            total += someArray[i];
+        }
+        console.log('sum of Arrays ' + total);
+
+        var cubes = [["English", 68], ["Maths", 75], ["science", 66]];
+
+        for (var i = 0; i < cubes.length; i++) {
+            for (var j = 0; j < cubes[i].length; j++) {
+                console.log(cubes[i]);
+                console.log(cubes[j]);
+            }
+        }
+
+        var scores = [1, 2, 3, 4, 5];
+        var sp = scores.splice(0, 3);
+        console.log('---' + sp);
+    })
+
+    function greeting(message) {
+        return function (name) {
+            return message + ' ' + name;
+        }
+    }
+    var sayHi = greeting('Hi');
+    var sayHello = greeting('Hello');
+
+    console.log(sayHi('John')); // Hi John
+    console.log(sayHello('John')); // Hello John
+
+    var array_of_numbers = [5, 7, 1, 9, 8, 5];
+
+    array_of_numbers.forEach(function (current_value, index, initial_array) {
+        if (current_value % 2) {
+            console.log('odd');
+        }
+        else {
+            console.log('even');
+        }
+    });
+    var products = [
+        { name: 'iPhone', price: 900 },
+        { name: 'Samsung Galaxy', price: 850 },
+        { name: 'Sony Xperia', price: 700 }
+    ];
+
+    function displayProducts(products) {
+        for (let i = 0; i < products.length; i++) {
+            console.log(`name: ${products[i].name}, price: ${products[i].price}`);
+        }
+    }
+    console.log('Products sorted by name:');
+    //  products.sort(compareBy('name'));
+    displayProducts(products);
+
+    var colors = ['red', 'green', 'blue'];
+    //colors.splice(1, 0, 'yellow', 'pink');
+    colors.splice(2, 2, 'Python');
+    console.log(colors);
+
+    let a = 3
+    function addTwo(x) {
+        let ret = x + 2
+        return ret
+    }
+    let b = addTwo(a)
+    console.log('closure ' + b)
+    let val1 = 2
+    function multiplyThis(n) {
+        let ret = n * val1
+        return ret
+    }
+    let multiplied = multiplyThis(6)
+    console.log('example of scope:', multiplied)
+
+    function createCounter() {
+        let counter = 0
+        const myFunction = function () {
+            counter = counter + 1
+            return counter
+        }
+        return myFunction
+    }
+    const increment = createCounter()
+    const c1 = increment()
+    const c2 = increment()
+    const c3 = increment()
+    console.log('example increment', c1, c2, c3)
+
+    /*
+     class user {
+         constructor(name, age) {
+
+             this.name = name;
+             this.age = age;
+         }
+         incrementAge() {
+             this.age += 1;
+         }
+         get name() {
+             return this.name;
+         }
+         set name(newN) {
+             this.name = newN;
+         }
+     }
+ const newuser = new user('sanjay', 35);
+ console.log('my name is ' + newuser.name);
+ newuser.incrementAge();
+ console.log('my age is ' + newuser.age);
+
+ newuser.name = 'sanjay';
+ console.log('my name is ' + newuser.name); -->
+
+*/
+
+
+</script>

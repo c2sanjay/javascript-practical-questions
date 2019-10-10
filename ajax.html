@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        img {
+            height: 100px;
+            float: left;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <title>An JSONP example </title>
+</head>
+
+<body>
+    <!-- DIV FOR SHOWING IMAGES -->
+    <div id="images">
+    </div>
+    <!-- SCRIPT FOR GETTING IMAGES FROM FLICKER.COM USING JSONP -->
+    <script>
+        $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+            {
+                format: "json"
+            },
+            //RETURNED RESPONSE DATA IS LOOPED AND ONLY IMAGE IS APPENDED TO IMAGE DIV
+            function (data) {
+                $.each(data.items, function (i, item) {
+                    $("<img/>").attr("src", item.media.m).appendTo("#images");
+
+                });
+            });</script>
+</body>
+
+</html>

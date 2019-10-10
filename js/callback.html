@@ -1,0 +1,101 @@
+<html>
+
+<head>
+
+    <script>
+        function greeting(name) {
+            console.log(`Hello ${name}, welcome to Scotch!`);
+        }
+        //The above function is assigned a name greeting and has an argument of name. We're also using an ES6 template string. 
+        // Let’s use this function as a callback function.
+
+        function introduction(firstName, lastName, callback) {
+            const fullName = `${firstName} ${lastName}`;
+
+            callback(fullName);
+        }
+
+        introduction('Chris', 'Nwamba', greeting); // Hello Chris Nwamba, welcome to Scotch!
+
+
+
+
+        function test(callback) {
+            console.log('hello india');
+            aaa()
+        }
+
+        function aaa() {
+            console.log('hi sanjay')
+        }
+        test();
+
+        function functionTwo(var1, callback) {
+            callback(var1);
+            callback(var1);
+        }
+
+        functionTwo(1, function (x) { alert(x); })
+
+        const weather = true
+        const date = new Promise(function (resolve, reject) {
+            if (weather) {
+                const dateDetails = {
+                    name: 'Cubana Restaurant',
+                    location: '55th Street',
+                    table: 5
+                };
+
+                resolve(dateDetails)
+            } else {
+                reject(new Error('Bad weather, so no Date'))
+            }
+        });
+
+
+        var isMomHappy = true;
+
+        // Promise
+        var willIGetNewPhone = new Promise(
+            function (resolve, reject) {
+                if (isMomHappy) {
+                    var phone = {
+                        brand: 'Samsung',
+                        color: 'black'
+                    };
+                    resolve(phone); // fulfilled
+                } else {
+                    var reason = new Error('mom is not happy');
+                    reject(reason); // reject
+                }
+
+            }
+        );
+
+        var askMom = function () {
+            willIGetNewPhone
+                .then(function (fulfilled) {
+                    // yay, you got a new phone
+                    console.log(fulfilled);
+                    // output: { brand: 'Samsung', color: 'black' }
+                })
+                .catch(function (error) {
+                    // oops, mom don't buy it
+                    console.log(error.message);
+                    // output: 'mom is not happy'
+                });
+        };
+
+        askMom();
+
+    </script>
+</head>
+
+<body>
+
+
+    <button onclick='askMom()'>ask mom</button>
+
+</body>
+
+</html>

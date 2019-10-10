@@ -1,0 +1,44 @@
+<html>
+
+<head></head>
+
+<body>
+    <script>
+        var cart = [];
+
+        cart.push('Sanjay', 'Honnor', 'Rohit')
+        // cart.pop('l')
+
+        cart.splice(1, 1, 'umbrella');
+
+        console.log(cart);
+
+        function saveCart() {
+            // alert();
+            sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
+        }
+
+        function loadCart() {
+
+            cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
+
+            // if (sessionStorage.getItem('shoppingCart') !== null)
+
+            // loadCart();
+        }
+
+        var numbers = [2, 8, 2, 4, 15, 6]
+        numbers.sort(function (a, b) {
+            return (a - b)
+        })
+        numbers.length = 12
+        console.log(numbers);
+        console.log(numbers)
+
+    </script>
+
+    <button class="btn btn-primary" onclick="saveCart()">saveCart</button>
+
+</body>
+
+</html>
